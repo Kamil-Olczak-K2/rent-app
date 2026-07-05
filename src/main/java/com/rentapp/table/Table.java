@@ -1,10 +1,10 @@
 package com.rentapp.table;
 
-import com.rentapp.dBObject.Accessory;
+import com.rentapp.db_object.Accessory;
 import com.rentapp.util.Calculate;
 import com.rentapp.util.Credentials;
 import com.rentapp.util.DBQuery;
-import com.rentapp.dBObject.Rent;
+import com.rentapp.db_object.Rent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;

@@ -2,7 +2,7 @@ package com.rentapp.table;
 
 
 import com.rentapp.util.Calculate;
-import com.rentapp.dBObject.Accessory;
+import com.rentapp.db_object.Accessory;
 import com.rentapp.util.DBQuery;
 
 import java.sql.Date;

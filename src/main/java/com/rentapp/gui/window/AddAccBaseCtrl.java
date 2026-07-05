@@ -1,6 +1,6 @@
 package com.rentapp.gui.window;
 
-import com.rentapp.dBObject.Accessory;
+import com.rentapp.db_object.Accessory;
 import com.rentapp.gui.scene.SceneCtrl;
 import com.rentapp.table.AccessoryRow;
 import com.rentapp.util.DBQuery;
@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Function;

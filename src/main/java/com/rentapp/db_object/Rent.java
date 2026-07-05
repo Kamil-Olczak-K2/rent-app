@@ -1,4 +1,4 @@
-package com.rentapp.dBObject;
+package com.rentapp.db_object;
 
 import com.rentapp.table.ClientRow;
 import com.rentapp.table.EquipRow;

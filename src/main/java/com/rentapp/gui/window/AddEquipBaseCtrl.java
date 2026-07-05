@@ -1,6 +1,6 @@
 package com.rentapp.gui.window;
 
-import com.rentapp.dBObject.Accessory;
+import com.rentapp.db_object.Accessory;
 import com.rentapp.gui.scene.SceneCtrl;
 import com.rentapp.table.AccessoryRow;
 import com.rentapp.table.EquipRow;

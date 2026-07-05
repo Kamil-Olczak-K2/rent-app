@@ -1,8 +1,9 @@
-package com.rentapp.dBObject;
+package com.rentapp.db_object;
 
 import com.rentapp.util.Calculate;
-//TODO
+
 public class Accessory{
+
     private int accessoryID;
     private String name;
     private String priceNett;

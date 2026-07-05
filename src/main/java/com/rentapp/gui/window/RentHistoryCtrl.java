@@ -52,9 +52,6 @@ public class RentHistoryCtrl implements Initializable {
     @FXML
     private TableColumn<RentedRow, String> longTerm;
 
-
-
-
     @FXML
     private TextField search;
     @FXML

@@ -2,8 +2,8 @@ package com.rentapp.gui.window;
 
 import com.rentapp.util.Calculate;
 import com.rentapp.util.DBQuery;
-import com.rentapp.dBObject.Accessory;
-import com.rentapp.dBObject.Rent;
+import com.rentapp.db_object.Accessory;
+import com.rentapp.db_object.Rent;
 import com.rentapp.table.*;
 import com.rentapp.gui.scene.SceneCtrl;
 import com.rentapp.util.Logger;

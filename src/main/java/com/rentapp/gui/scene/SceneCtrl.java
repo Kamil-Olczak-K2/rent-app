@@ -1,7 +1,7 @@
 package com.rentapp.gui.scene;
 
-import com.rentapp.dBObject.Accessory;
-import com.rentapp.dBObject.Rent;
+import com.rentapp.db_object.Accessory;
+import com.rentapp.db_object.Rent;
 import com.rentapp.gui.window.*;
 import com.rentapp.table.*;
 import com.rentapp.App;
@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -290,7 +289,7 @@ public class SceneCtrl {
 
     public static void showMessageWindow(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.initOwner(stage);
+        alert.initOwner(scene.getWindow());
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
@@ -299,7 +298,7 @@ public class SceneCtrl {
 
     public static Optional<ButtonType> showMessageWindow(String title, String message, boolean userChoice) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.initOwner(stage);
+        alert.initOwner(scene.getWindow());
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
@@ -116,25 +117,26 @@ public class Credentials {
         try {
             BufferedReader bReader = new BufferedReader(new FileReader(FILE_NAME));
             String line = bReader.readLine();
-            if(!Files.exists(Paths.get(TMP_FILE_NAME))){
-                Files.createFile(Paths.get(TMP_FILE_NAME));
+            Path tmp_file_path = Paths.get(TMP_FILE_NAME);
+            if(!Files.exists(tmp_file_path)){
+                Files.createFile(tmp_file_path);
             } else {
-                Files.delete(Paths.get(TMP_FILE_NAME));
-                Files.createFile(Paths.get(TMP_FILE_NAME));
+                Files.delete(tmp_file_path);
+                Files.createFile(tmp_file_path);
             }
             while (line != null) {
-                Files.write(Paths.get(TMP_FILE_NAME), (line + "\n").getBytes() , StandardOpenOption.APPEND);
+                Files.write(tmp_file_path, (line + "\n").getBytes() , StandardOpenOption.APPEND);
                 if (BCrypt.checkpw(userName, line)) {
                     line = bReader.readLine();
-                    Files.write(Paths.get(TMP_FILE_NAME), (line + "\n").getBytes() , StandardOpenOption.APPEND);
+                    Files.write(tmp_file_path, (line + "\n").getBytes() , StandardOpenOption.APPEND);
                     line = bReader.readLine();
                     if(BCrypt.checkpw(newPassword, line)){
                         SceneCtrl.showMessageWindow("Błąd", "Nowe hasło nie może być takie samo jak obecne.");
-                        Files.delete(Paths.get(TMP_FILE_NAME));
+                        Files.delete(tmp_file_path);
                         return false;
                     }
                     String newLine = BCrypt.hashpw(newPassword, BCrypt.gensalt());
-                    Files.write(Paths.get(TMP_FILE_NAME), (newLine + "\n").getBytes(), StandardOpenOption.APPEND);
+                    Files.write(tmp_file_path, (newLine + "\n").getBytes(), StandardOpenOption.APPEND);
                     line = bReader.readLine();
                 } else {
                     line = bReader.readLine();
@@ -143,14 +145,14 @@ public class Credentials {
             bReader.close();
             Thread.sleep(100);
             Files.delete(Paths.get(FILE_NAME));
-            Files.move(Paths.get(TMP_FILE_NAME), Paths.get(FILE_NAME));
+            Files.move(tmp_file_path, Paths.get(FILE_NAME));
             return DBQuery.updateDatabaseUser(userName, newPassword);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace(); Logger.logExToFile(ex);
-            SceneCtrl.showMessageWindow("Błąd", "Nie odnaleziono pliku konfiguracujnego *.bin.");
+            SceneCtrl.showMessageWindow("Błąd", "Nie odnaleziono pliku konfiguracyjnego *.bin.");
         } catch (IOException | InterruptedException e) {
             e.printStackTrace(); Logger.logExToFile(e);
-            SceneCtrl.showMessageWindow("Błąd", "Brak dostępu do pliku konfiguracujnego *.bin.");
+            SceneCtrl.showMessageWindow("Błąd", "Brak dostępu do pliku konfiguracyjnego *.bin.");
         } finally {
             Arrays.fill(newPassword, (byte) 0);
             Arrays.fill(userName, (byte) 0);
@@ -185,10 +187,10 @@ public class Credentials {
             return true;
         } catch (FileNotFoundException ex) {
             ex.printStackTrace(); Logger.logExToFile(ex);
-            SceneCtrl.showMessageWindow("Błąd", "Nie odnaleziono pliku konfiguracujnego *.bin.");
+            SceneCtrl.showMessageWindow("Błąd", "Nie odnaleziono pliku konfiguracyjnego *.bin.");
         } catch (IOException | InterruptedException e) {
             e.printStackTrace(); Logger.logExToFile(e);
-            SceneCtrl.showMessageWindow("Błąd", "Brak dostępu do pliku konfiguracujnego *.bin.");
+            SceneCtrl.showMessageWindow("Błąd", "Brak dostępu do pliku konfiguracyjnego *.bin.");
         }
         return false;
     }

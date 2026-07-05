@@ -1,6 +1,6 @@
 package com.rentapp.gui.window;
 
-import com.rentapp.dBObject.Rent;
+import com.rentapp.db_object.Rent;
 import com.rentapp.gui.scene.SceneCtrl;
 import com.rentapp.table.EquipRow;
 import javafx.event.ActionEvent;
